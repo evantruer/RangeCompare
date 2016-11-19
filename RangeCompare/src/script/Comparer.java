@@ -32,6 +32,23 @@ public class Comparer {
 				}
 			}
 		}
+		for(int xIt = 0; xIt < _x; xIt++){
+			for(int yIt = 0; yIt < _y; yIt++){
+				LinkedList<Taxon> list = _cells[xIt][yIt].get_present();
+				int n = list.size();
+				float r = 0;
+				float g = 0;
+				float b = 0;
+				for(Taxon t : list){
+					Color c = t.get_color();
+					r += c.getRed();
+					g += c.getGreen();
+					b += c.getBlue();
+				}
+				img[xIt][yIt] = new Color(r/n, g/n, b/n);
+				
+			}
+		}
 		return img;
 	}
 	
